@@ -11,6 +11,7 @@ import api from '../../api/axios';
 import PortfolioCard from '../../widgets/components/PortfolioCard';
 import PortfolioModal from '../../widgets/modals/PortfolioItemModal';
 import PortfolioFilterByBrand from '../../features/PortfolioFilterByBrand/PortfolioFilterByBrand';
+import { Seo } from '../../app/seo/Seo';
 
 type Brand = { _id: string; name: string; logoUrl?: string | null };
 type Model = { _id: string; name: string };
@@ -33,6 +34,8 @@ const PortfolioPage = () => {
     );
     const navigate = useNavigate();
     const { id } = useParams();
+    const isProductRoute = !!id;
+    const robots = isProductRoute ? 'noindex,follow' : 'index,follow';
 
     useEffect(() => {
         const fetchBrandsAndModels = async () => {
@@ -102,6 +105,13 @@ const PortfolioPage = () => {
 
     return (
         <>
+            <Seo
+                title="Портфолио ArtWheels"
+                description="Портфолио ArtWheels: работы клиентов и фото дисков вживую. Посмотрите примеры комплектов и вдохновляйтесь."
+                pathname={location.pathname}
+                search={location.search}
+                robots={robots}
+            />
             <Box sx={{ p: 3, mt: 2 }}>
                 <Typography variant="h4" fontWeight={600} gutterBottom>
                     Наши диски вживую

@@ -92,7 +92,6 @@ const ProductModal = ({
     if (!data) return null;
 
     const isWheelSet = type === 'wheel_set';
-    const isStaggeredSet = isWheelSet && data?.kind === 'STAGGERED';
     const isUniformSet = isWheelSet && data?.kind === 'UNIFORM';
 
     const title =

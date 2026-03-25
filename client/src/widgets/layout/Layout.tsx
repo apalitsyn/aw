@@ -3,10 +3,12 @@ import Header from './Header';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 import FloatingActions from '../../features/floatingActions/FloatingActions';
+import { OrganizationJsonLd } from '../../app/seo/OrganizationJsonLd';
 
 const Layout = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <OrganizationJsonLd />
       <Header />
 
       <Toolbar />

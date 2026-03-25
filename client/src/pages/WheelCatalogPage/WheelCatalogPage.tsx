@@ -12,6 +12,7 @@ import api from '../../api/axios';
 import WheelSelectorTabs from '../../features/wheelSelector/ui/WheelSelectorTabs';
 import ProductModal from '../../widgets/modals/ProductModal';
 import ProductCard from '../../widgets/components/WheelCard';
+import { Seo } from '../../app/seo/Seo';
 
 type CatalogItem = any;
 
@@ -25,6 +26,8 @@ const WheelCatalogPage = () => {
   const navigate = useNavigate();
 
   const { kind, id } = useParams();
+  const isProductRoute = !!id;
+  const robots = isProductRoute ? 'noindex,follow' : 'index,follow';
 
   const searchParams = useMemo(
     () => new URLSearchParams(location.search),
@@ -75,6 +78,13 @@ const WheelCatalogPage = () => {
 
   return (
     <>
+      <Seo
+        title="Каталог дисков | ArtWheels"
+        description="Подбор и покупка дисков: литые и комплектующие. Каталог с удобными фильтрами и быстрым оформлением."
+        pathname={location.pathname}
+        search={location.search}
+        robots={robots}
+      />
       <WheelSelectorTabs />
       <Box sx={{ p: 3 }}>
         <Typography variant="h4" fontWeight={600} gutterBottom>

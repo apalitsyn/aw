@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://artwheels.ru/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-03-25</lastmod>
+  </url>
+  <url>
+    <loc>https://artwheels.ru/about</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-25</lastmod>
+  </url>
+  <url>
+    <loc>https://artwheels.ru/contacts</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-25</lastmod>
+  </url>
+  <url>
+    <loc>https://artwheels.ru/portfolio</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-03-25</lastmod>
+  </url>
+  <url>
+    <loc>https://artwheels.ru/catalog/wheels</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-03-25</lastmod>
+  </url>
+  <url>
+    <loc>https://artwheels.ru/catalog/tyres</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-03-25</lastmod>
+  </url>
+</urlset>
+

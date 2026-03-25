@@ -12,6 +12,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import TyreCard from '../../widgets/components/TyreCard';
 import TyreByParams from '../../features/tyerSelector/ui/TyreByParams';
 import ProductModal from '../../widgets/modals/ProductModal';
+import { Seo } from '../../app/seo/Seo';
 
 
 const TyreCatalogPage = () => {
@@ -25,6 +26,8 @@ const TyreCatalogPage = () => {
 
   const navigate = useNavigate();
   const { id } = useParams();
+  const isProductRoute = !!id;
+  const robots = isProductRoute ? 'noindex,follow' : 'index,follow';
 
   useEffect(() => {
     const fetchTyres = async () => {
@@ -53,6 +56,13 @@ const TyreCatalogPage = () => {
 
   return (
     <>
+      <Seo
+        title="Каталог шин | ArtWheels"
+        description="Каталог шин: подберите подходящий комплект по параметрам и сезонности. Быстро оформим заказ."
+        pathname={location.pathname}
+        search={location.search}
+        robots={robots}
+      />
       <TyreByParams />
       <Box sx={{ p: 3 }}>
         <Typography variant="h4" fontWeight={600} gutterBottom>

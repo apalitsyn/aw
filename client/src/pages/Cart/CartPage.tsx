@@ -2,9 +2,10 @@ import { Box, Typography, Container, Button, FormControlLabel, Checkbox, Circula
 import { useCart } from '../../shared/hooks/useCart';
 import { CartItemCard } from '../../entities/CartItemCard/CartItemCard';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../../api/axios';
+import { Seo } from '../../app/seo/Seo';
 
 interface OtherProduct {
   _id: string;
@@ -15,6 +16,7 @@ interface OtherProduct {
 const CartPage = () => {
   const { cart, removeFromCart } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Дополнительные товары
   const [sensors, setSensors] = useState<OtherProduct[]>([]);
@@ -74,10 +76,18 @@ const CartPage = () => {
   };
 
   return (
-    <Container sx={{ py: 7 }}>
-      <Typography variant="h4" gutterBottom>
-        Корзина
-      </Typography>
+    <>
+      <Seo
+        title="Корзина | ArtWheels"
+        description="Ваша корзина с дисками и шинами. Оформите заказ за несколько шагов."
+        pathname={location.pathname}
+        search={location.search}
+        robots="noindex,follow"
+      />
+      <Container sx={{ py: 7 }}>
+        <Typography variant="h4" gutterBottom>
+          Корзина
+        </Typography>
 
       {cart.length === 0 ? (
         <Typography variant="body1" sx={{ textAlign: 'center', py: 4 }}>Ваша корзина пуста.</Typography>
@@ -155,7 +165,8 @@ const CartPage = () => {
           </Box>
         </>
       )}
-    </Container>
+      </Container>
+    </>
   );
 };
 

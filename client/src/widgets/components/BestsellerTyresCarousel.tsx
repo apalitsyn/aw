@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 
@@ -92,9 +92,9 @@ const BestsellerTyresCarousel = () => {
         setActiveIndex(prev => (prev - 1 < 0 ? maxIndex : prev - 1));
     };
 
-    const goNext = () => {
+    const goNext = useCallback(() => {
         setActiveIndex(prev => (prev + 1 > maxIndex ? 0 : prev + 1));
-    };
+    }, [maxIndex]);
 
     const handlePrevClick = () => {
         setLastInteraction(Date.now());
@@ -114,7 +114,7 @@ const BestsellerTyresCarousel = () => {
         }, AUTO_SLIDE_INTERVAL);
 
         return () => window.clearInterval(intervalId);
-    }, [tyres.length, itemsPerView, maxIndex, lastInteraction]);
+    }, [tyres.length, itemsPerView, maxIndex, lastInteraction, goNext]);
 
     useEffect(() => {
         if (!tyres.length) return;

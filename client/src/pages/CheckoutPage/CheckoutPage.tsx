@@ -21,6 +21,7 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import api from '../../api/axios';
 import { useCart } from '../../shared/hooks/useCart';
+import { Seo } from '../../app/seo/Seo';
 
 interface OtherProduct {
   _id: string;
@@ -64,6 +65,7 @@ const OrderForm = () => {
   const { cart, clearCart } = useCart();
   const navigate = useNavigate();
   const location = useLocation();
+  const robots = 'noindex,follow';
 
   const { selectedSensors = [], needBolts = false } = (location.state as any) || {};
 
@@ -201,10 +203,18 @@ const OrderForm = () => {
   const showAddressField = deliveryMethod && deliveryMethod !== 'pickup';
 
   return (
-    <Box sx={{ maxWidth: 500, mx: 'auto', mt: 4, py: 7 }}>
-      <Typography variant="h5" gutterBottom>
-        Оформление заказа
-      </Typography>
+    <>
+      <Seo
+        title="Оформление заказа | ArtWheels"
+        description="Оформите заказ в ArtWheels: выберите доставку и оплату, заполните данные и перейдите к оплате."
+        pathname={location.pathname}
+        search={location.search}
+        robots={robots}
+      />
+      <Box sx={{ maxWidth: 500, mx: 'auto', mt: 4, py: 7 }}>
+        <Typography variant="h5" gutterBottom>
+          Оформление заказа
+        </Typography>
 
       <TextField
         label="Имя"
@@ -380,7 +390,8 @@ const OrderForm = () => {
         </Typography>
       </Box>
 
-    </Box>
+      </Box>
+    </>
   );
 };
 
