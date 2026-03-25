@@ -41,15 +41,15 @@ const PortfolioPage = () => {
         const fetchBrandsAndModels = async () => {
             try {
                 const resBrands = await api.get('/api/client/models');
-                const brandsData: Brand[] = resBrands.data;
+                const brandsData: Brand[] = Array.isArray(resBrands.data) ? resBrands.data : [];
                 setBrands(brandsData);
 
                 const modelsMap: Record<string, Model[]> = {};
                 await Promise.all(
                     brandsData.map(async b => {
                         try {
-                            const resModels = await api.get(`/api/client/models/${b._id}`);
-                            modelsMap[b._id] = resModels.data;
+                        const resModels = await api.get(`/api/client/models/${b._id}`);
+                        modelsMap[b._id] = Array.isArray(resModels.data) ? resModels.data : [];
                         } catch (err) {
                             console.error('Ошибка при получении моделей бренда', b._id, err);
                             modelsMap[b._id] = [];
@@ -77,7 +77,7 @@ const PortfolioPage = () => {
                 params.page = String(page);
 
                 const res = await api.get('/api/client/portfolio', { params });
-                setItems(res.data.data);
+                setItems(Array.isArray(res.data?.data) ? res.data.data : []);
                 setPages(res.data.pages || 1);
             } catch (err) {
                 console.error('Ошибка при получении портфолио:', err);

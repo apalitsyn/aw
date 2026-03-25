@@ -34,8 +34,20 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
+    "prerender": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "reactSnap": {
+    "include": [
+      "/",
+      "/about",
+      "/contacts",
+      "/catalog/wheels",
+      "/catalog/tyres",
+      "/portfolio"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +68,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-slick": "^0.23.13"
+    "@types/react-slick": "^0.23.13",
+    "react-snap": "^1.23.0"
   }
 }

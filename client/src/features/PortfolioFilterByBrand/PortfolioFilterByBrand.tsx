@@ -28,7 +28,7 @@ const PortfolioFilterByBrand = () => {
         const fetchBrands = async () => {
             try {
                 const res = await api.get('/api/client/models');
-                setBrands(res.data);
+                setBrands(Array.isArray(res.data) ? res.data : []);
             } catch (err) {
                 console.error('Ошибка при получении брендов:', err);
             }
@@ -46,7 +46,7 @@ const PortfolioFilterByBrand = () => {
         const fetchModels = async () => {
             try {
                 const res = await api.get(`/api/client/models/${brandId}`);
-                setModels(res.data);
+                setModels(Array.isArray(res.data) ? res.data : []);
             } catch (err) {
                 console.error('Ошибка при получении моделей:', err);
             }

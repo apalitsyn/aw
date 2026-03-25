@@ -49,7 +49,7 @@ const WheelCatalogPage = () => {
 
         const res = await api.get('/api/client/wheels', { params });
 
-        setItems(res.data.data || []);
+        setItems(Array.isArray(res.data?.data) ? res.data.data : []);
         console.log(res.data.data)
         setPages(res.data.pages || 1);
       } catch (err) {

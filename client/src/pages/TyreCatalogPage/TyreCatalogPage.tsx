@@ -42,7 +42,7 @@ const TyreCatalogPage = () => {
         params.prioritizeMy = 'true';
 
         const res = await api.get('/api/client/tyre', { params });
-        setTyres(res.data.data);
+        setTyres(Array.isArray(res.data?.data) ? res.data.data : []);
         setPages(res.data.pages || 1);
       } catch (err) {
         console.error('Ошибка при получении шин:', err);
